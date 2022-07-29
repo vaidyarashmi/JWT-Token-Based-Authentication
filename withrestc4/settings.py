@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from datetime import datetime, timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -125,5 +126,11 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
+import datetime
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+JWT_AUTH={
+    'JWT_ALLOW_REFRESH':True,
+    'JWT_AUTH_HEADER_PREFIX':'TEST',                         #for header name by default name is JWT 
+    'JWT_EXPIRATION_DELTA':datetime.timedelta(seconds=300),
+    'JWT_REFRESH_EXPIRATION_DELTA':datetime.timedelta(days=15)
+}
